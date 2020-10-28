@@ -1,15 +1,10 @@
-import { Users } from "./main.controller";
+import { MainController } from './main.controller'
+class Main  {
+  private controller: MainController;
 
-class Main {
-  private controller: Users
-  
-  constructor () {
-    this.controller = new Users()
-    this.printUsersList()
-  }
-
-  async printUsersList() {
-    console.log(await this.controller.getUsers())
+  constructor() {
+    this.controller = new MainController()
+    this.controller.printUsersList()
   }
 }
 
