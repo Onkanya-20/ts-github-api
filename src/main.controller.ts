@@ -1,19 +1,21 @@
 import { UserService } from "./user.service";
 import { IUser } from './user.contract'
-
+import { MainView } from './main.contract'
 export class MainController {
   private service: IUser
+  private mainView: MainView
 
-  constructor() {
+  constructor(mainView: MainView) {
     this.service = new UserService()
+    this.mainView = mainView
   }
-  
+
   async printUsersList() {
     try {
       const res = await this.service.getUsers()
-      console.log(res)
+      this.mainView.setResultGetUsers(res)
     } catch(err) {
-      console.error(err)
+      this.mainView.setErrorMessage(err)
     }
   }
 }
