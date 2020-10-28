@@ -1,13 +1,15 @@
 import { Users } from "./main.controller";
 
-class Main extends Users {
+class Main {
+  private controller: Users
+  
   constructor () {
-    super()
+    this.controller = new Users()
     this.printUsersList()
   }
 
   async printUsersList() {
-    console.log(await this.getUsers())
+    console.log(await this.controller.getUsers())
   }
 }
 
